@@ -10,7 +10,7 @@ const diff_match_patch = require("./diff_match_patch_uncompressed.js");
 const dmp = new diff_match_patch();
 
 const OLD_FILE_NAME = "./PythonDocApp/android/full/1.0.0/index.android.bundle";
-const PATH_FILE_NAME = "./PythonDocApp/android/path/index.android.bundle_1.0.0";
+const PATH_FILE_NAME = "./PythonDocApp/android/path/1.0.0/index.android.bundle";
 const PATH_TEST_FOLDER = "./PythonDocApp/android/test";
 const PATH_TEST_BUNDLE_FILE = PATH_TEST_FOLDER + "/index.android.bundle";
 

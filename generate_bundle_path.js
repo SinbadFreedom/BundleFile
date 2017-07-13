@@ -11,7 +11,7 @@ const dmp = new diff_match_patch();
 
 const BUNDLE_FILE_VERSION = "./PythonDocApp/android/full";
 const BUNDLE_FILE_LATEST = "./PythonDocApp/android/latest/index.android.bundle";
-const BUNDLE_FILE_PATH = "./PythonDocApp/android/path";
+const BUNDLE_FILE_PATH_FOLDER = "./PythonDocApp/android/path";
 
 const bundleTextLatest = fs.readFileSync(BUNDLE_FILE_LATEST, 'utf-8');
 
@@ -31,8 +31,9 @@ fs.readdir(BUNDLE_FILE_VERSION, function (error, files) {
         console.log("bundleFileName : ", bundleFileName);
         let bundleTextVersion = fs.readFileSync(bundleFileName, 'utf-8');
         let pathText = patch_launch(bundleTextVersion, bundleTextLatest);
-        mkdirsSync(BUNDLE_FILE_PATH);
-        let pathFileName = BUNDLE_FILE_PATH + "/index.android.bundle" + "_" + filename;
+        let bundlePath = BUNDLE_FILE_PATH_FOLDER + "/" + filename;
+        mkdirsSync(bundlePath);
+        let pathFileName = bundlePath + "/index.android.bundle";
         console.log("pathFileName : ", pathFileName);
         fs.writeFileSync(pathFileName, pathText);
     });
