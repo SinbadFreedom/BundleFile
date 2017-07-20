@@ -9,9 +9,18 @@ const diff_match_patch = require("./diff_match_patch_uncompressed.js");
 
 const dmp = new diff_match_patch();
 
-const BUNDLE_FILE_VERSION = "./PythonDocApp/android/full";
-const BUNDLE_FILE_LATEST = "./PythonDocApp/android/latest/index.android.bundle";
-const BUNDLE_FILE_PATH_FOLDER = "./PythonDocApp/android/path";
+/** Check for arguments*/
+if (process.argv.length < 3) {
+    /** 第三个参数表示渠道名称, [yingyongbao, google] */
+    console.log("Usage: node generate_bundle_path.js CHANNEL_NAME");
+    process.exit(1);
+}
+
+const channelName = process.argv[2];
+
+const BUNDLE_FILE_VERSION = "./PythonDocApp/" + channelName +"/full";
+const BUNDLE_FILE_LATEST = "./PythonDocApp/" + channelName +"/latest/index.android.bundle";
+const BUNDLE_FILE_PATH_FOLDER = "./PythonDocApp/" + channelName + "/path";
 
 const bundleTextLatest = fs.readFileSync(BUNDLE_FILE_LATEST, 'utf-8');
 
